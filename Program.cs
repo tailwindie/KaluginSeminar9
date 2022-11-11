@@ -1,97 +1,93 @@
 ﻿/*
-// Задача №19. Напишите программу, которая принимает на вход пятизначное число и проверяет, является ли оно палиндромом.
+// Задача №25. Напишите программу, которая принимает на вход два числа (A и B) и возводит число A в натуральную степень B (Math.Pow НЕ использовать)
 
-void Palindrome(int num)
+int Powww(int a, int b)
 {
-  int num1 = num;
-  int num2 = 0;
+  int i = 1 ;
+  int res = 1 ;
 
-while (num > 0)
-{
-    num2 = (num % 10) + (num2 * 10 );
-    num /= 10;
-}
-
-if (num2 != num1)
-{
-  Console.Write($"{num1} - не палиндром! Вот оно наоборот: {num2}.");  
-}
-else
-{
-  Console.Write($"{num1} - это палиндром!. Вот оно наоборот: {num2}");
-}
-};
-
-while (true)
-{
-  Console.Write("Введите пятизначное число: ");
-  int num = Convert.ToInt32(Console.ReadLine() );
-
-  if (num>=10000 && num<=99999)
+  while( i <= b )
   {
-    Palindrome(num);
-    break;
-  }
-  else
-  {
-    Console.Write("Вы ввели не пятизначное число!") ;
-  };
-}
-*/
-//----------------------------------------------------------
-/*
-// Задача №21. Напишите программу, которая принимает на вход координаты двух точек и находит расстояние между ними в 3D пространстве.
-
-double Coords(int xa, int ya, int za, int xb, int yb, int zb)
-{
- double abz = Math.Sqrt( ((xb-xa) * (xb-xa)) + ((yb-ya) * (yb-ya)) + ((zb-za) * (zb-za)) );
- return abz;
-}
-
-Console.Write("Введите X координату точки A: ");
-int xa1 = Convert.ToInt32(Console.ReadLine());
-Console.Write("Введите Y координату точки A: ");
-int ya1 = Convert.ToInt32(Console.ReadLine());
-Console.Write("Введите Z координату точки A: ");
-int za1 = Convert.ToInt32(Console.ReadLine());
-
-Console.Write("Введите X координату точки B: ");
-int xb1 = Convert.ToInt32(Console.ReadLine());
-Console.Write("Введите Y координату точки B: ");
-int yb1 = Convert.ToInt32(Console.ReadLine());
-Console.Write("Введите Z координату точки B: ");
-int zb1 = Convert.ToInt32(Console.ReadLine());
-
-
-
-double distance = Coords(xa1, ya1, za1, xb1, yb1, zb1);
-
-Console.Write($"Расстояние между точками A ({xa1}, {ya1}, {za1}) и B ({xb1}, {yb1}, {zb1}) = {distance} ");
-*/
-//----------------------------------------------------------
-/*
-// Задача №23. Напишите программу, которая принимает на вход число (N) и выдаёт таблицу кубов чисел от 1 до N.
-
-void Cube(int N)
-{
-    if (N != 0)
+    if( b==0 )
     {
-        int a = 0;
-        int i = 1;
-        while (i <= N)
-        {
-            a = i*i*i;
-            Console.Write($"{a} ");
-            i++;
-        } 
+      res  = 1;
+      break; 
     }
     else
     {
-        Console.Write("Умный ход! Вот ваша таблица: 0");
+      res *= a;
+      i++ ;
     }
-};
+  }
+  return res;
+}
 
-Console.Write("Введите число N: ");
-int N = Convert.ToInt32(Console.ReadLine());
-Cube(N);
+Console.WriteLine("Введите число: ");
+int a1 = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine("Укажите степень: ");
+int b1 = Convert.ToInt32(Console.ReadLine());
+
+int result = Powww(a1,b1);
+
+Console.WriteLine($"{a1} в {b1} степени = {result}");
+*/
+//----------------------------------------------------------
+/*
+// Задача №27. Напишите программу, которая принимает на вход число и выдаёт сумму цифр в числе.
+
+int Count(int a)
+{
+  int res = 0;
+  while(a > 0)
+  {
+    res += (a % 10);
+    a /= 10;
+  }
+  return res ;
+}
+
+  Console.Write("Введите число: ");
+  int a1 = Convert.ToInt32(Console.ReadLine());
+
+
+  if(a1 <=0)
+  {
+    Console.WriteLine($"Сумма цифр в вашем числе = 0.");
+    Console.WriteLine($"Возможно, потому что вы просто написали 0 или отрицательное число.");
+    Console.WriteLine($"Попробуйте заново. Впишите число больше нуля.");
+  }
+  else
+  {
+    int result = Count(a1);
+    Console.WriteLine($"Сумма цифр в числе {a1} = {result}");
+  }
+*/
+//----------------------------------------------------------
+/*
+// Задача №29. Напишите программу, которая создает массив заданного пользователем размера, заполняет массив элементами от 1 до 99 и выводит их на экран.
+
+int [] GetArray(int n)
+{
+  int [] arr = new int[n];
+  for (int i = 0; i < n; i++)
+  {
+    arr[i] = new Random().Next(1 , 100);
+  }
+  return arr;
+}
+
+void ShowArray(int [] arr)
+{
+  Console.Write($"Ваш массив: ");
+  for( int i = 0; i < arr.Length; i++)
+  {
+    Console.Write($"{arr[i]} ");
+  }
+}
+ 
+Console.Write("Введите размер массива: ");
+int n1 = Convert.ToInt32(Console.ReadLine());
+
+ShowArray(GetArray(n1));
 */
