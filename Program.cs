@@ -1,69 +1,134 @@
 ﻿/*
-// Задача №41. Пользователь вводит с клавиатуры M чисел. Посчитайте, сколько чисел больше 0 ввёл пользователь.
+// Задача №47. Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.
 
-int [] GetArr(int m)
+double [,] GetArray(int m, int n)
 {
-  int [] arr = new int[m];
+  double [,] arr = new double[m, n];
+  Console.WriteLine($"Ваш массив: ");
   for (int i = 0; i < m; i++)
   {
-    Console.Write($"Введите число номер {i+1}: ");
-    arr[i] = Convert.ToInt32(Console.ReadLine());
+    Console.Write($"\n");
+    for (int j = 0; j < n; j++)
+    {
+      arr[i, j] = Math.Round(new Random().NextDouble(), 1);
+      arr[i, j] += new Random().Next(0, 100);
+      Console.Write($"{arr[i, j]}   ");
+    }
+  }
+  return arr;
+}
+ 
+Console.Write("Введите m: ");
+int m1 = Convert.ToInt32(Console.ReadLine());
+
+Console.Write("Введите n: ");
+int n1 = Convert.ToInt32(Console.ReadLine());
+
+GetArray(m1, n1);
+*/
+//----------------------------------------------------------
+/*
+// Задача №50. Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, и возвращает значение этого элемента или же указание, что такого элемента нет.
+
+double [,] GetArray(int n, int m)
+{
+  double [,] arr = new double[n, m];
+  Console.WriteLine($"Ваш массив: ");
+  for (int i = 0; i < n; i++)
+  {
+    Console.Write($"\n");
+    for (int j = 0; j < m; j++)
+    {
+      arr[i, j] = Math.Round(new Random().NextDouble(), 1);
+      arr[i, j] += new Random().Next(0, 100);
+      Console.Write($"{arr[i, j]}   ");
+    }
   }
   return arr;
 }
 
-void Counting(int [] arr)
+void Checkout (double [,] arr)
 {
-  int res = 0;
-  for (int i = 0; i < arr.Length; i++)
-  {
-  if (arr[i] > 0)
-    {
-      res++;
-      Console.Write($"{arr[i]} ");
-    }
-  }
-  Console.Write($"Всего чисел больше нуля: {res}");
-}
- 
-Console.Write("Введите количество чисел: ");
-int m1 = Convert.ToInt32(Console.ReadLine());
+  Console.Write($"\n");
+  Console.Write($"\n");
+  Console.Write("Введите позицию элемента m: ");
+  int m2 = Convert.ToInt32(Console.ReadLine());
 
-Counting(GetArr(m1));
-*/
-//----------------------------------------------------------
-/*
-// Задача №43. Напишите программу, которая найдёт точку пересечения двух прямых, заданных уравнениями y = k1 * x + b1, y = k2 * x + b2; значения b1, k1, b2 и k2 задаются пользователем.
+  Console.Write("Введите позицию элемента n: ");
+  int n2 = Convert.ToInt32(Console.ReadLine());
 
-void Crossing(double b1, double b2, double k1, double k2)
-{
-  if (k1 != k2)
+  int rows = arr.GetUpperBound(0) + 1;
+  int cols = arr.Length / rows;
+  if (m2 > rows || n2 > cols)
   {
-    double x = (b1 - b2) / -(k1 - k2) ;
-    double y = k1 * x + b1;
-    Console.WriteLine($"Линии пересекаются в точке ({x}, {y}).");
+    Console.Write($"Такого элемента нет!");
   }
   else
   {
-    Console.WriteLine($"У линий нет точек пересечения!");
+    Console.Write($"Ваш элемент: {arr[m2-1, n2-1]}");
   }
 }
 
-Console.WriteLine("y1 = k1 * x + b1");
-Console.WriteLine("y2 = k2 * x + b2");
+ 
+Console.Write("Введите m: ");
+int m1 = Convert.ToInt32(Console.ReadLine());
 
-Console.Write("Введите k1: ");
-double k1 = Convert.ToDouble(Console.ReadLine());
+Console.Write("Введите n: ");
+int n1 = Convert.ToInt32(Console.ReadLine());
 
-Console.Write("Введите b1: ");
-double b1 = Convert.ToDouble(Console.ReadLine());
-
-Console.Write("Введите k2: ");
-double k2 = Convert.ToDouble(Console.ReadLine());
-
-Console.Write("Введите b2: ");
-double b2 = Convert.ToDouble(Console.ReadLine());
-
-Crossing(b1, b2, k1, k2);
+Checkout(GetArray(m1, n1));
 */
 //----------------------------------------------------------
+/*
+// Задача №52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
+int [,] TooManyArrays(int m, int n)
+{
+  int [,] arr = new int[n, m];
+  Console.WriteLine($"Ваш массив: ");
+
+  for (int i = 0; i < n; i++)
+  {
+    Console.Write($"\n");
+    for (int j = 0; j < m; j++)
+    {
+      arr[i, j] = new Random().Next(0, 10);
+      Console.Write($"{arr[i, j]}   ");
+    }
+  }
+  return arr;
+}
+
+void Checkout (int [,] arr)
+{
+  Console.Write($"\n");
+  Console.Write($"\n");
+  int rows = arr.GetUpperBound(0) + 1;
+  int cols = arr.Length / rows;
+
+  double []resArr = new double[cols];
+
+  for (int g = 0; g < cols; g++)
+  {
+    
+    for (int p = 0; p < rows; p++)
+    {
+      resArr[g] += arr[p, g];
+      
+    }
+  }
+  for (int f = 0; f < cols; f++)
+  {
+      resArr[f] /= rows;
+      resArr[f] = Math.Round(resArr[f], 1);
+      Console.Write($"{resArr[f]}   ");
+  }
+}
+ 
+Console.Write("Введите m: ");
+int m1 = Convert.ToInt32(Console.ReadLine());
+
+Console.Write("Введите n: ");
+int n1 = Convert.ToInt32(Console.ReadLine());
+
+Checkout(TooManyArrays(m1, n1));
+*/
