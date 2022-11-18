@@ -1,114 +1,69 @@
 ﻿/*
-// Задача №34. Задайте массив заполненный случайными положительными трёхзначными числами. Напишите программу, которая покажет количество чётных чисел в массиве.
+// Задача №41. Пользователь вводит с клавиатуры M чисел. Посчитайте, сколько чисел больше 0 ввёл пользователь.
 
-int [] GetArray(int n)
+int [] GetArr(int m)
 {
-  int [] arr = new int[n];
-  for (int i = 0; i < n; i++)
+  int [] arr = new int[m];
+  for (int i = 0; i < m; i++)
   {
-    arr[i] = new Random().Next(100 , 1000);
+    Console.Write($"Введите число номер {i+1}: ");
+    arr[i] = Convert.ToInt32(Console.ReadLine());
   }
   return arr;
 }
 
-void ShowCount(int [] arr)
+void Counting(int [] arr)
 {
   int res = 0;
-  Console.Write($"Ваш массив: ");
-  for( int i = 0; i < arr.Length; i++)
+  for (int i = 0; i < arr.Length; i++)
   {
-    Console.Write($"{arr[i]} ");
-
-    if (arr[i] % 2 == 0)
+  if (arr[i] > 0)
     {
-      res += 1;
+      res++;
+      Console.Write($"{arr[i]} ");
     }
   }
-  Console.Write($". Количество чётных чисел = {res}.");
+  Console.Write($"Всего чисел больше нуля: {res}");
 }
  
-Console.Write("Введите размер массива: ");
-int n1 = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите количество чисел: ");
+int m1 = Convert.ToInt32(Console.ReadLine());
 
-ShowCount(GetArray(n1));
-*/
-//----------------------------------------------------------
-
-// Задача №36. Задайте массив, заполненный случайными числами. Найдите сумму элементов, стоящих на нечётных позициях.
-/*
-int [] GetArray(int n)
-{
-  int [] arr = new int[n];
-  for (int i = 0; i < n; i++)
-  {
-    arr[i] = new Random().Next();
-  }
-  return arr;
-}
-
-void ShowCount(int [] arr)
-{
-  int res = 0;
-  Console.Write($"Ваш массив: ");
-  for( int i = 0; i < arr.Length; i++)
-  {
-    Console.Write($"{arr[i]} ");
-
-    if (i % 2 == 0)
-    {
-      res += arr[i];
-    }
-  }
-  Console.Write($". Сумма чисел на нечётных позициях = {res}.");
-}
- 
-Console.Write("Введите размер массива: ");
-int n1 = Convert.ToInt32(Console.ReadLine());
-
-ShowCount(GetArray(n1));
+Counting(GetArr(m1));
 */
 //----------------------------------------------------------
 /*
-// Задача №38. Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
+// Задача №43. Напишите программу, которая найдёт точку пересечения двух прямых, заданных уравнениями y = k1 * x + b1, y = k2 * x + b2; значения b1, k1, b2 и k2 задаются пользователем.
 
-double [] GetArray(int n)
+void Crossing(double b1, double b2, double k1, double k2)
 {
-  double [] arr = new double[n];
-  for (int i = 0; i < n; i++)
+  if (k1 != k2)
   {
-    arr[i] = Math.Round(new Random().NextDouble(), 1);
-    arr[i] += new Random().Next(0, 100);
+    double x = (b1 - b2) / -(k1 - k2) ;
+    double y = k1 * x + b1;
+    Console.WriteLine($"Линии пересекаются в точке ({x}, {y}).");
   }
-  return arr;
+  else
+  {
+    Console.WriteLine($"У линий нет точек пересечения!");
+  }
 }
 
-void ShowCount(double [] arr)
-{
-  double maxArr = arr[0];
-  double minArr = arr[0];
-  
-  Console.Write($"Ваш массив: ");
-  for( int i = 0; i < arr.Length; i++)
-  {
-    Console.Write($"{arr[i]} ");
-  }
-  for( int j = 1; j < arr.Length; j++)
-  {
-    if (arr[j] > arr[j-1])
-    {
-      maxArr = arr[j];
-    }
-    else if (arr[j] < arr[j-1])
-    {
-      minArr = arr[j];
-    }
-  }
-  double res = Math.Round(maxArr - minArr, 1);
-  Console.Write($". Разница между максимальным и минимальным элементами массива = {maxArr} - {minArr} = {res}.");
-}
+Console.WriteLine("y1 = k1 * x + b1");
+Console.WriteLine("y2 = k2 * x + b2");
 
-Console.Write("Введите размер массива: ");
-int n1 = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите k1: ");
+double k1 = Convert.ToDouble(Console.ReadLine());
 
-ShowCount(GetArray(n1));
+Console.Write("Введите b1: ");
+double b1 = Convert.ToDouble(Console.ReadLine());
+
+Console.Write("Введите k2: ");
+double k2 = Convert.ToDouble(Console.ReadLine());
+
+Console.Write("Введите b2: ");
+double b2 = Convert.ToDouble(Console.ReadLine());
+
+Crossing(b1, b2, k1, k2);
 */
+//----------------------------------------------------------
